@@ -1,0 +1,17 @@
+General:
+  ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)
+  ✔ Add actions and reducers @created(17-07-21 15:20) @done (17-07-21 16:21)
+  ☐ Add input validation for jars @created(17-07-21 16:47)
+  Duplicate jar names are not allowed, trim trailing whitespace
+  ☐ Add styling for jars page
+
+
+Components:
+  Containers:
+    ✔ AddJar @done (17-07-21 16:46)
+    ✔ JarList @done (17-07-21 16:46)
+  Presentational:
+    ☐ App
+    ✔ Input @done (17-07-21 16:46)
+    ✔ List @done (17-07-21 16:46)
+
