@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import List from '../../components/List/List';
 
-const mapStateToProps = (state) => {
-	// Get all labels from jars array
+const mapDispatchToProps = (dispatch) => {
 	return {
-		jars: state.map(jar => jar.label)
+		remove: (id) => dispatch({
+			type: 'REMOVE_JAR',
+			jar_id: id
+		})
 	};
 };
 
-const JarList = connect(mapStateToProps, null)(List);
+const mapStateToProps = (state) => {
+	// Get all labels from jars array
+	return {
+		jars: state
+	};
+};
+
+const JarList = connect(mapStateToProps, mapDispatchToProps)(List);
 
 
 export default JarList;
