@@ -9,10 +9,16 @@ import AddJar from '../../containers/AddJar/AddJar';
 class App extends Component {
   render() {
     return (
-      <div>
-        <AddJar/>
-        <JarList/>
-      </div>
+	<div>
+		<div className='App-header text-primary'>
+			<h2>Activity Jar</h2>
+		</div>
+
+	    <div className='container'>
+	        <AddJar/>
+	        <JarList/>
+	    </div>
+	</div>
     );
   }
 }
