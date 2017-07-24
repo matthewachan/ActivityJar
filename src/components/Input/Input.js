@@ -5,46 +5,31 @@ import './Input.css';
 
 class Input extends Component {
 
-	validateInput() {
+	validate() {
 		let errorMsg = '';
-		
-		for (let i = 0; i < this.props.labels.length; i++) {
-			if (this.props.labels[i] === this.input.value) {
-				errorMsg = 'Error: Duplicate value entered';
-				break;
-			}
-		}
-
+		this.props.items.forEach((item) => {
+			if (item === this.input.value.trim())
+				errorMsg = 'Error: Duplicate value entered. Please enter a different name.';
+		});
 		return errorMsg;
 	}
-
-	add() {
-		// let errorMsg = this.validateInput();
-
-		// // Error occurred
-		// if (errorMsg !== '') 
-		// 	alert(errorMsg);
+	
+	addItem() {
+		let errorMsg = this.validate();
 		
-		// No error
-		// else {
-		if (this.props.input_type === 'add_jar') {
-			this.props.add(this.input.value.trim());
-			
-		}
+		if (errorMsg !== '')
+			alert(errorMsg);
 		else {
-			this.props.add(parseInt(this.props.match.params.jar_id, 10), this.input.value.trim());
-
+			this.props.add(this.input.value.trim());
+			this.input.value = ''
 		}
-		this.input.value = '';
-		// }	
 	}
 
 	render() {
-		const placeholder = this.props.input_type === 'add_jar' ? 'Add activity jar...' : 'Add activity...';
 		return (
 			<div className='form-group'>
-				<input className='form-control' style={{width: '90%', display: 'inline'}} ref={node => this.input = node} type='text' placeholder={placeholder}/>
-				<button className='btn btn-primary' style={{width: '10%' }} onClick={this.add.bind(this)}>Add</button>
+				<input className='form-control' style={{width: '90%', display: 'inline'}} ref={node => this.input = node} type='text' placeholder={this.props.placeholder}/>
+				<button className='btn btn-primary' style={{width: '10%'}} onClick={this.addItem.bind(this)}>Add</button>
 			</div>
 		);
 	}

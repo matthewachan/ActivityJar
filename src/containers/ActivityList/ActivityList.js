@@ -2,20 +2,29 @@ import { connect } from 'react-redux';
 
 import List from '../../components/List/List';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+	const items = [];
+	state[ownProps.match.params.jar_id].activities.forEach((element) => {
+		items.push({
+			id: element.activity_id,
+			text: element.activity
+		});
+	});
+	
 	return {
-		items: state,
-		list_type: 'activity_list'
+		items: items,
+		list_type: 'activity_list',
+		list_link: false
 	};
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		remove: (jar_id, activity_id) => {
+		remove: (activity_id) => {
 			dispatch({
 				type: 'REMOVE_ACTIVITY',
 				activity_id: activity_id,
-				jar_id: jar_id
+				jar_id: parseInt(ownProps.match.params.jar_id, 10)
 			})
 		}
 	};

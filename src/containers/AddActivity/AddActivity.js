@@ -2,20 +2,20 @@ import { connect } from 'react-redux';
 
 import Input from '../../components/Input/Input';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	return {
-		labels: state.map(jar => jar.label),
-		input_type: 'add_activity'
+		items: state[ownProps.match.params.jar_id].activities.map(a => a.activity),
+		placeholder: 'Add an activity...'
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		add: (jar_id, activity) => dispatch({
+		add: (activity) => dispatch({
 			type: 'ADD_ACTIVITY',
 			activity: activity,
 			activity_id: 1234,
-			jar_id: jar_id
+			jar_id: parseInt(ownProps.match.params.jar_id, 10)
 		})
 	};
 };

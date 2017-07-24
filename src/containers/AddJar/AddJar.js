@@ -4,8 +4,8 @@ import Input from '../../components/Input/Input';
 
 const mapStateToProps = (state) => {
 	return {
-		labels: state.map(jar => jar.label),
-		input_type: 'add_jar'
+		items: state.map(jar => jar.label),
+		placeholder: 'Add an activity jar...'
 	};
 };
 
