@@ -2,10 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-<<<<<<< HEAD
 import { BrowserRouter } from 'react-router-dom'
-=======
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
 
 import reducer from './reducers/jars';
 import './index.css';
@@ -39,13 +36,9 @@ const store = createStore(reducer, preloadedState);
 
 ReactDOM.render(
 	<Provider store={store}>
-<<<<<<< HEAD
     <BrowserRouter>
   		<App />
     </BrowserRouter>
-=======
-		<App />
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
 	</Provider>, document.getElementById('root')
 );
 

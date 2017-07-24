@@ -1,7 +1,6 @@
 General:
   ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)
   ✔ Add actions and reducers @created(17-07-21 15:20) @done (17-07-21 16:21)
-<<<<<<< HEAD
   ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-21 17:35)
   Duplicate jar names are not allowed, trim trailing whitespace
   ✔ Add bootstrap styling @done (17-07-21 18:25)
@@ -17,11 +16,9 @@ General:
 
 Optional:
   ☐ User must confirm before deleting a jar @created(17-07-21 18:40)
-=======
   ☐ Add input validation for jars @created(17-07-21 16:47)
   Duplicate jar names are not allowed, trim trailing whitespace
   ☐ Add styling for jars page
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
 
 
 Components:
@@ -29,11 +26,7 @@ Components:
     ✔ AddJar @done (17-07-21 16:46)
     ✔ JarList @done (17-07-21 16:46)
   Presentational:
-<<<<<<< HEAD
     ✔ App @done (17-07-21 18:26)
-=======
-    ☐ App
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
     ✔ Input @done (17-07-21 16:46)
     ✔ List @done (17-07-21 16:46)
 

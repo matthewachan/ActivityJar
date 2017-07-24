@@ -4,12 +4,8 @@ import Input from '../../components/Input/Input';
 
 const mapStateToProps = (state) => {
 	return {
-<<<<<<< HEAD
 		labels: state.map(jar => jar.label),
 		input_type: 'add_jar'
-=======
-		labels: state.map(jar => jar.label)
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
 	};
 };
 

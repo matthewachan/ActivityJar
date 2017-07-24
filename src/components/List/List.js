@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom'
 
 import './List.css';
@@ -18,14 +17,6 @@ class List extends Component {
 						<i onClick={() => this.props.list_type === 'jar_list' ? this.props.remove(item.jar_id) : this.props.remove(parseInt(this.props.match.params.jar_id), item.activity_id)} className='fa fa-trash-o' style={{width: '2%'}} aria-hidden='true'></i>
 					</div>
 				)}
-=======
-
-class List extends Component {
-	render() {
-		return (
-			<ul>
-				{ this.props.jars.map(label => <li>{label}</li>) }
->>>>>>> f6062eb0fb9211a06dd11b3f8251f7954b6b752f
 			</ul>
 		);
 	}
