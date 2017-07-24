@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './JarPage.css';
 import JarList from '../../containers/JarList/JarList';
@@ -33,7 +34,7 @@ class JarPage extends Component {
   }
 }
 JarPage.contextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 };
 
 export default JarPage;

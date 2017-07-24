@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './Input.css'
+import PropTypes from 'prop-types';
+
+import './Input.css';
 
 class Input extends Component {
 
@@ -30,7 +32,7 @@ class Input extends Component {
 			
 		}
 		else {
-			this.props.add(parseInt(this.props.match.params.jar_id), this.input.value.trim());
+			this.props.add(parseInt(this.props.match.params.jar_id, 10), this.input.value.trim());
 
 		}
 		this.input.value = '';
@@ -48,7 +50,7 @@ class Input extends Component {
 	}
 }
 Input.contextTypes = {
-	store: React.PropTypes.object
+	store: PropTypes.object
 };
 
 export default Input;

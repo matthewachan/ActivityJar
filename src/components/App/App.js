@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './App.css';
 import JarPage from '../JarPage/JarPage';
@@ -17,7 +18,7 @@ class App extends Component {
   }
 }
 App.contextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 };
 
 
