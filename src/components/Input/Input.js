@@ -20,7 +20,7 @@ class Input extends Component {
 		if (errorMsg !== '')
 			alert(errorMsg);
 		else {
-			this.props.add(this.input.value.trim());
+			this.props.add(this.input.value.trim(), this.props.items.length);
 			this.input.value = ''
 		}
 	}

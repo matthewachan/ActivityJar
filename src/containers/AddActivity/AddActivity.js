@@ -11,10 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		add: (activity) => dispatch({
+		add: (activity, id) => dispatch({
 			type: 'ADD_ACTIVITY',
 			activity: activity,
-			activity_id: 1234,
+			activity_id: id,
 			jar_id: parseInt(ownProps.match.params.jar_id, 10)
 		})
 	};

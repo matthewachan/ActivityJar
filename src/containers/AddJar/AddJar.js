@@ -11,10 +11,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		add: (jar_label) => dispatch({
+		add: (jar_label, id) => dispatch({
 			type: 'ADD_JAR',
 			label: jar_label,
-			jar_id: 1234
+			jar_id: id
 		})
 	};
 };
