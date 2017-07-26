@@ -12,7 +12,7 @@ class ActivityPage extends Component {
 		this.jar = store.getState()[this.props.match.params.jar_id];
 		return (
 			<div>
-				<Link to='/'><i className="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to jars</Link>
+				<Link to='/'><i className="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to Activity Jars</Link>
 				<div className='container'>
 					<div className='row'>
 						<div className='col'>

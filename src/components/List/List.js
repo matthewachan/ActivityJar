@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import ReactTooltip from 'react-tooltip';
 import './List.css';
 
 class List extends Component {
@@ -14,8 +14,11 @@ class List extends Component {
 								 { this.props.list_link ? <Link to={this.props.list_link_path + item.id}>{item.text}</Link> : item.text }
 							</li>
 							<div>
-								{this.props.item_repeat ? <i onClick={() => this.props.toggle(item.id)} className={item.repeat ? 'fa fa-repeat mr-3 text-primary' : 'fa fa-repeat mr-3 text-muted'} aria-hidden='true'></i> : null}<i onClick={() => this.props.remove(item.id)} className='fa fa-trash-o' aria-hidden='true'></i>
+								<span data-tip='Repeat?'>{this.props.item_repeat ? <i onClick={() => this.props.toggle(item.id)} className={item.repeat ? 'fa fa-repeat mr-3 text-primary' : 'fa fa-repeat mr-3 text-muted'} aria-hidden='true'></i> : null}</span>
+								<ReactTooltip />
+								<span data-tip='Delete'><i onClick={() => this.props.remove(item.id)} className='fa fa-trash-o' aria-hidden='true'></i></span>
 							</div>
+						
 						</div>
 				)}
 			</ul>
