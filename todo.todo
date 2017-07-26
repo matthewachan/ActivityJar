@@ -12,9 +12,10 @@ General:
   ✔ npm i react-promise @created(17-07-24 13:58) @done (17-07-25 10:20)
   ✔ Create new async component for fetching Google Places API JSON and then rendering the component @created(17-07-24 13:58) @done (17-07-25 11:42)
   ✔ Create component GooglePlacesResults @done (17-07-25 15:59)
-  ☐ Fix jar_id and activity_id logic. Right now the actions call static id's, so adding and removing logic is flawed @created(17-07-23 00:25)
-  ☐ Adjust store data schema so the app can pull jars by id rather than by array index (this method has flaws when jars can be deleted from the array) @created(17-07-24 12:03)
-  ☐ List component should have unique keys for each li element @created(17-07-24 12:35)
+  ✔ Fix jar_id and activity_id logic. Right now the actions call static id's, so adding and removing logic is flawed @created(17-07-23 00:25) @done (17-07-25 21:37)
+  ✔ Adjust store data schema so the app can pull jars by id rather than by array index (this method has flaws when jars can be deleted from the array) @created(17-07-24 12:03) @done (17-07-25 21:37)
+  ✔ List component should have unique keys for each li element @created(17-07-24 12:35) @done (17-07-25 21:37)
+  ☐ Dispatch draw action when a user clicks 'Draw an activity!' @created(17-07-25 21:38)
 
 
 
@@ -35,4 +36,3 @@ Components:
     ✔ App @done (17-07-21 18:26)
     ✔ Input @done (17-07-21 16:46)
     ✔ List @done (17-07-21 16:46)
-

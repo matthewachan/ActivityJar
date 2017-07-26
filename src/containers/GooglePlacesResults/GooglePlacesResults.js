@@ -17,10 +17,10 @@ class GooglePlacesResults extends Component {
     then(json) {
         return (
             <ul className='list-group'>
-                {json.results.map(result => 
-                    <li className='media list-group-item'>
+                {json.results.map((result, index) => 
+                    <li key={index} className='media list-group-item'>
                         <div className='d-flex mr-5 img-container'>
-                            { result.photos ? <img className='img-thumbnail img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference='+result.photos[0].photo_reference} /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png'/>}
+                            { result.photos ? <img className='img-thumbnail img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference='+result.photos[0].photo_reference} alt="business" /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt="business" />}
                         </div>
                         <div className='media-body'>
                             <h5 className='mt-1 mb-1'>{result.name}&nbsp;</h5>
@@ -28,7 +28,7 @@ class GooglePlacesResults extends Component {
                             <p>Rating: { result.rating ? <span>{result.rating}</span> : <span>None</span> }</p>
                             <p>{result.vicinity}</p>
                         </div>
-                    </li>)}
+                </li>)}
             </ul>
         );
     }
@@ -37,8 +37,9 @@ class GooglePlacesResults extends Component {
 		const { store } = this.context;
 		this.promise = () => {
 			const activities = store.getState()[this.props.match.params.jar_id].activities;
-			let r = Math.floor(Math.random() * activities.length);
-			let randActivity = activities[r].activity.toLowerCase();
+			const keys = Object.keys(activities);
+			let r = Math.floor(Math.random() * keys.length);
+			let randActivity = activities[keys[r]].activity.toLowerCase();
 			let url ='https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.774929,-122.419416&radius=1500&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&keyword=' + randActivity
 			return fetch(url)
     		.then(res => res.json())

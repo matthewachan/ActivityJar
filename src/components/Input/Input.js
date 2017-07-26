@@ -14,23 +14,27 @@ class Input extends Component {
 		return errorMsg;
 	}
 	
-	addItem() {
+	addItem(event) {
+		event.preventDefault();
+		
 		let errorMsg = this.validate();
 		
 		if (errorMsg !== '')
 			alert(errorMsg);
 		else {
-			this.props.add(this.input.value.trim(), this.props.items.length);
+			this.props.add(this.input.value.trim());
 			this.input.value = ''
 		}
 	}
 
 	render() {
 		return (
-			<div className='form-group'>
-				<input className='form-control' style={{width: '90%', display: 'inline'}} ref={node => this.input = node} type='text' placeholder={this.props.placeholder}/>
-				<button className='btn btn-primary' style={{width: '10%'}} onClick={this.addItem.bind(this)}>Add</button>
-			</div>
+			<form onSubmit={event => this.addItem(event)}>
+				<div className='form-group'>
+					<input className='form-control' style={{width: '90%', display: 'inline'}} ref={node => this.input = node} type='text' placeholder={this.props.placeholder}/>
+					<button type='submit' className='btn btn-primary' style={{width: '10%'}}>Add</button>
+				</div>
+			</form>
 		);
 	}
 }

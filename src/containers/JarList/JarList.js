@@ -13,10 +13,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	const items = [];
-	state.forEach((element) => {
+	Object.keys(state).forEach((key) => {
 		items.push({
-			id: element.jar_id,
-			text: element.label
+			id: key,
+			text: state[key].label
 		});
 	});
 	// Get all labels from jars array

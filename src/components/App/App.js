@@ -10,9 +10,9 @@ class App extends Component {
   render() {
     return (
     	<Switch>
-			<Route path='/jar/:jar_id' component={ActivityPage} />
-			<Route path='/' component={JarPage} />
-		</Switch>
+		    <Route path='/jar/:jar_id' component={ActivityPage} />
+			  <Route path='/' component={JarPage} />
+		  </Switch>
 
     );
   }

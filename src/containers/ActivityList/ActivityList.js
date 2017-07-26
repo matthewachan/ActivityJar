@@ -4,10 +4,11 @@ import List from '../../components/List/List';
 
 const mapStateToProps = (state, ownProps) => {
 	const items = [];
-	state[ownProps.match.params.jar_id].activities.forEach((element) => {
+	const activities = state[ownProps.match.params.jar_id].activities
+	Object.keys(activities).forEach(key => {
 		items.push({
-			id: element.activity_id,
-			text: element.activity
+			id: key,
+			text: activities[key].activity
 		});
 	});
 	

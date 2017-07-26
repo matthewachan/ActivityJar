@@ -10,27 +10,43 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 
-const preloadedState = [{
-  jar_id: 0,
-  label: 'Jar 1',
-  activities: []
-},
-{
+const preloadedState = {
+  2553487358: {
+    label: 'Food Jar',
+    activities: {
+      179021649: {
+        activity: 'Sushi',
+        repeat: true
+      },
+      2088074780: {
+        activity: 'Pasta',
+        repeat: true
+      }
+    },
+    170218834: {
+        activity: 'Soup',
+        repeat: true
+    }
+  },
+  1472647057: {
   jar_id: 1,
-  label: 'Jar 2',
-  activities: [
-    {
-      activity_id: 0,
+  label: 'Activity Jar',
+  activities: {
+    2888167059: {
       activity: 'Bowling',
       repeat: true
     },
-    {
-      activity_id: 1,
+    395274124: {
       activity: 'Basketball',
       repeat: false
+    },
+    760014489: {
+      activity: 'Rock Climbing',
+      repeat: false
     }
-  ]
-}];
+  }
+}};
+
 const store = createStore(reducer, preloadedState);
 
 
