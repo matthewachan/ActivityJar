@@ -17,6 +17,9 @@ General:
   ✔ List component should have unique keys for each li element @created(17-07-24 12:35) @done (17-07-25 21:37)
   ✔ Dispatch draw action when a user clicks 'Draw an activity!' @created(17-07-25 21:38) @done (17-07-25 23:30)
   ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
+  ☐ npm i react-tooltip @created(17-07-25 23:58)
+  Add tooltip to repeat icon
+  ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
 
 
 
