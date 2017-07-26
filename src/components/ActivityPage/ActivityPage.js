@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AddActivity from '../../containers/AddActivity/AddActivity';
@@ -10,25 +11,28 @@ class ActivityPage extends Component {
 		const { store } = this.context;
 		this.jar = store.getState()[this.props.match.params.jar_id];
 		return (
-			<div className='container'>
-				<div className='row'>		
-					<div className='col text-primary App-header'>
-						<h2>{this.jar.label}</h2>
+			<div>
+				<Link to='/'><i className="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back to jars</Link>
+				<div className='container'>
+					<div className='row'>
+						<div className='col'>
+							<h2 className='text-primary App-header'>{this.jar.label}</h2>
+						</div>
 					</div>
-				</div>
-				<div className='row'>		
-					<div className='col'>
-						<AddActivity {...this.props} />
+					<div className='row'>		
+						<div className='col'>
+							<AddActivity {...this.props} />
+						</div>
 					</div>
-				</div>
-				<div className='row'>
-					<div className='col'>
-						<ActivityList {...this.props} />
-					</div>
-				</div>
-				<div className='row'>
-					<div className='col'>
-						<GooglePlacesResults {...this.props} />
+					<div className='row'>
+	
+	
+						<div className='col'>
+							<GooglePlacesResults {...this.props} />
+						</div>
+						<div className='col-4'>
+							<ActivityList {...this.props} />
+						</div>
 					</div>
 				</div>
 			</div>
