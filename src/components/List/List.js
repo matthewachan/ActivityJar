@@ -9,11 +9,13 @@ class List extends Component {
 		return (
 			<ul className='list-group'>
 				{ this.props.items.map((item, index) => 
-						<div className='list-group-item' key={item.id}>
-							<li style={{width: '98%', listStyle: 'none'}}>
+						<div className='list-group-item justify-content-between' key={item.id}>
+							<li style={{listStyle: 'none'}}>
 								 { this.props.list_link ? <Link to={this.props.list_link_path + item.id}>{item.text}</Link> : item.text }
 							</li>
-							<i onClick={() => this.props.remove(item.id)} className='fa fa-trash-o' style={{width: '2%'}} aria-hidden='true'></i>
+							<div>
+								{this.props.item_repeat ? <i onClick={() => this.props.toggle(item.id)} className={item.repeat ? 'fa fa-repeat mr-3 text-primary' : 'fa fa-repeat mr-3 text-muted'} aria-hidden='true'></i> : null}<i onClick={() => this.props.remove(item.id)} className='fa fa-trash-o' aria-hidden='true'></i>
+							</div>
 						</div>
 				)}
 			</ul>

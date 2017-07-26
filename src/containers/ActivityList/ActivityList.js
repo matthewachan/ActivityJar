@@ -8,25 +8,35 @@ const mapStateToProps = (state, ownProps) => {
 	Object.keys(activities).forEach(key => {
 		items.push({
 			id: key,
-			text: activities[key].activity
+			text: activities[key].activity,
+			repeat: activities[key].repeat
 		});
 	});
 	
 	return {
 		items: items,
 		list_type: 'activity_list',
-		list_link: false
+		list_link: false,
+		item_repeat: true
 	};
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		remove: (activity_id) => {
-			dispatch({
+			const action = {
 				type: 'REMOVE_ACTIVITY',
 				activity_id: activity_id,
 				jar_id: parseInt(ownProps.match.params.jar_id, 10)
-			})
+			};
+			dispatch(action);
+		},
+		toggle: (activity_id) => {
+			dispatch({
+				type: 'TOGGLE_REPEAT',
+				activity_id: activity_id,
+				jar_id: parseInt(ownProps.match.params.jar_id, 10)
+			});
 		}
 	};
 }

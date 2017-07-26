@@ -8,7 +8,7 @@ const reducer = (state = {}, action) => {
       };
     case 'REMOVE_JAR':
       return Object.keys(state)
-        .filter(key => key !== action.jar_id)
+        .filter(key => key != action.jar_id)
         .reduce((obj, key) => {
           obj[key] = state[key];
           return obj;
@@ -24,7 +24,10 @@ const reducer = (state = {}, action) => {
         [action.jar_id]: jar(state, action)
       };
     case 'TOGGLE_REPEAT':
-      return state.map(j => jar(j, action));
+      return {
+        ...state, 
+        [action.jar_id]: jar(state, action)
+      };
     case 'DRAW_ACTIVITY':
       return {
         ...state,
@@ -49,7 +52,7 @@ const jar = (state = {}, action) => {
           ...j.activities,
           [action.activity_id]: {
             activity: action.activity,
-            repeatable: false
+            repeat: false
           }
         }
       };
@@ -57,7 +60,7 @@ const jar = (state = {}, action) => {
     case 'REMOVE_ACTIVITY':
       var j = state[action.jar_id];
       var activities = Object.keys(j.activities)
-        .filter(key => key !== action.activity_id)
+        .filter(key => key != action.activity_id)
         .reduce((obj, key) => {
           obj[key] = j.activities[key];
           return obj;
@@ -67,18 +70,23 @@ const jar = (state = {}, action) => {
         activities: activities
       };
     case 'TOGGLE_REPEAT':
-      if (state.jar_id === action.jar_id) {
-        return {
-          jar_id: state.jar_id,
-          label: state.label,
-          activities: activities(state.activities, action)
-        }
-      }
-      return state;
+      var j = state[action.jar_id];
+      var activities = Object.keys(j.activities)
+        .reduce((obj, key) => {
+          if (key == action.activity_id)
+            obj[key] = {...j.activities[key], repeat: !j.activities[key].repeat};
+          else
+            obj[key] = j.activities[key];
+          return obj;
+        }, {});
+      return {
+        label: j.label,
+        activities: activities
+      };
     case 'DRAW_ACTIVITY':
       var j = state[action.jar_id];
       var activities = Object.keys(j.activities)
-        .filter(key => key !== action.activity_id || j.activities[key].repeatable)
+        .filter(key => key != action.activity_id || j.activities[key].repeat)
         .reduce((obj, key) => {
           obj[key] = j.activities[key];
           return obj;
@@ -90,6 +98,6 @@ const jar = (state = {}, action) => {
     default:
       return state;
   }
-};
+}; 
 
 export default reducer;

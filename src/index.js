@@ -16,16 +16,16 @@ const preloadedState = {
     activities: {
       179021649: {
         activity: 'Sushi',
-        repeat: true
+        repeat: false
       },
       2088074780: {
         activity: 'Pasta',
-        repeat: true
-      }
-    },
-    170218834: {
+        repeat: false
+      },
+      170218834: {
         activity: 'Soup',
-        repeat: true
+        repeat: false
+      }
     }
   },
   1472647057: {

@@ -24,7 +24,8 @@ const mapStateToProps = (state) => {
 		items: items,
 		list_link: true,
 		list_link_path: '/jar/',
-		list_type: 'jar_list'
+		list_type: 'jar_list',
+		item_repeat: false
 	};
 };
 
