@@ -29,23 +29,24 @@ const preloadedState = {
     }
   },
   1472647057: {
-  jar_id: 1,
-  label: 'Activity Jar',
-  activities: {
-    2888167059: {
-      activity: 'Bowling',
-      repeat: true
-    },
-    395274124: {
-      activity: 'Basketball',
-      repeat: false
-    },
-    760014489: {
-      activity: 'Rock Climbing',
-      repeat: false
+    jar_id: 1,
+    label: 'Activity Jar',
+    activities: {
+      2888167059: {
+        activity: 'Bowling',
+        repeat: true
+      },
+      395274124: {
+        activity: 'Basketball',
+        repeat: false
+      },
+      760014489: {
+        activity: 'Rock Climbing',
+        repeat: false
+      }
     }
   }
-}};
+};
 
 const store = createStore(reducer, preloadedState);
 

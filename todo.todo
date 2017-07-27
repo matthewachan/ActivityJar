@@ -17,9 +17,13 @@ General:
   ✔ List component should have unique keys for each li element @created(17-07-24 12:35) @done (17-07-25 21:37)
   ✔ Dispatch draw action when a user clicks 'Draw an activity!' @created(17-07-25 21:38) @done (17-07-25 23:30)
   ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
-  ☐ npm i react-tooltip @created(17-07-25 23:58)
+  ✔ npm i react-tooltip @created(17-07-25 23:58) @done (17-07-26 19:33)
   Add tooltip to repeat icon
   ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
+  1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
+  2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
+  3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
+  ☐ Address mongoose deprecation warnings @created(17-07-27 00:35)
 
 
 
