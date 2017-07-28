@@ -16,7 +16,7 @@ class Input extends Component {
 	
 	addItem(event) {
 		event.preventDefault();
-		
+		console.log(this.boop);
 		let errorMsg = this.validate();
 		
 		if (errorMsg !== '')
@@ -28,6 +28,7 @@ class Input extends Component {
 	}
 
 	render() {
+		this.boop = 5;
 		return (
 			<form onSubmit={event => this.addItem(event)}>
 				<div className='form-group'>
