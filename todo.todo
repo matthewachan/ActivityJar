@@ -19,6 +19,9 @@ General:
   ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
   ✔ npm i react-tooltip @created(17-07-25 23:58) @done (17-07-26 19:33)
   Add tooltip to repeat icon
+  ✔ Add geolib and geolocation @created(17-07-27 18:59) @done (17-07-27 18:59)
+  ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
+  ☐ Work on mediabox layout @created(17-07-27 19:00)
   ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
   1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
   2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.

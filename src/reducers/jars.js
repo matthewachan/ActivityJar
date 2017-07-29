@@ -8,7 +8,7 @@ const reducer = (state = {}, action) => {
       };
     case 'REMOVE_JAR':
       return Object.keys(state)
-        .filter(key => key != action.jar_id)
+        .filter(key => key !== action.jar_id)
         .reduce((obj, key) => {
           obj[key] = state[key];
           return obj;
@@ -60,7 +60,7 @@ const jar = (state = {}, action) => {
     case 'REMOVE_ACTIVITY':
       var j = state[action.jar_id];
       var activities = Object.keys(j.activities)
-        .filter(key => key != action.activity_id)
+        .filter(key => key !== action.activity_id)
         .reduce((obj, key) => {
           obj[key] = j.activities[key];
           return obj;
@@ -73,7 +73,7 @@ const jar = (state = {}, action) => {
       var j = state[action.jar_id];
       var activities = Object.keys(j.activities)
         .reduce((obj, key) => {
-          if (key == action.activity_id)
+          if (key === action.activity_id)
             obj[key] = {...j.activities[key], repeat: !j.activities[key].repeat};
           else
             obj[key] = j.activities[key];
@@ -86,7 +86,7 @@ const jar = (state = {}, action) => {
     case 'DRAW_ACTIVITY':
       var j = state[action.jar_id];
       var activities = Object.keys(j.activities)
-        .filter(key => key != action.activity_id || j.activities[key].repeat)
+        .filter(key => key !== action.activity_id || j.activities[key].repeat)
         .reduce((obj, key) => {
           obj[key] = j.activities[key];
           return obj;

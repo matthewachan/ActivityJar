@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import geolib from 'geolib';
 
 import './GooglePlacesResults.css';
+import StarRating from '../../components/StarRating/StarRating';
+import PriceLevel from '../../components/PriceLevel/PriceLevel';
 
 class Test extends Component {
     
@@ -54,8 +56,8 @@ class Test extends Component {
                         <div className='media-body'>
                             <h5 className='mt-1 mb-1'>{result.name}&nbsp;</h5>
                             { result.opening_hours && result.opening_hours.open_now ? <p className='text-success'>Open Now</p> : <p className='text-danger'>Closed</p> }
-                            <p>Rating: { result.rating ? <span>{result.rating}</span> : <span>None</span> }</p>
-                            <p>Price level: { result.price_level ? <span>{result.price_level}</span> : <span>None</span>} </p>
+                            <StarRating rating={result.rating} />
+                            <PriceLevel priceLevel={result.price_level} />
                             <p>{result.vicinity}</p>
                             <p>{this.convertToMiles(geolib.getDistance({latitude: this.latitude, longitude: this.longitude}, {latitude: result.geometry.location.lat, longitude: result.geometry.location.lng})).toPrecision(1) + ' miles'}</p>
                         </div>
@@ -74,7 +76,8 @@ class Test extends Component {
 
 		// Retrieve client geolocation via HTML5 geolocation API
 // 		global.navigator.geolocation.then(() => global.navigator.geolocation.getCurrentPosition(this.success, this.fail))
-		
+		this.latitude = 37.775899;
+		this.longitude = -122.412963;
 		let url ='https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.latitude + ',' + this.longitude + '&radius=1500&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&keyword=' + randomActivity.toLowerCase()
 		console.log(url);
 		return global.fetch(url)
