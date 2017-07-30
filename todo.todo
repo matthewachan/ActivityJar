@@ -1,43 +1,48 @@
-General:
-  ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)
-  ✔ Add actions and reducers @created(17-07-21 15:20) @done (17-07-21 16:21)
-  ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-21 17:35)
-  Duplicate jar names are not allowed, trim trailing whitespace
-  ✔ Add bootstrap styling @done (17-07-21 18:25)
-  ✔ Add 'REMOVE_JAR' functionality @created(17-07-21 17:35) @done (17-07-21 17:43)
-  ✔ npm install react-router and add BrowserRouter and Links @created(17-07-21 18:26) @done (17-07-22 14:26)
-  ✔ Standardize List component so ActivityList and JarList can use it @created(17-07-22 23:56) @done (17-07-23 00:24)
-  ✔ Clean up logic for ActivityList, JarList and List @created(17-07-22 23:57) @done (17-07-24 11:56)
-  1. Code is redundant and needs to be more readable
-  ✔ npm i react-promise @created(17-07-24 13:58) @done (17-07-25 10:20)
-  ✔ Create new async component for fetching Google Places API JSON and then rendering the component @created(17-07-24 13:58) @done (17-07-25 11:42)
-  ✔ Create component GooglePlacesResults @done (17-07-25 15:59)
-  ✔ Fix jar_id and activity_id logic. Right now the actions call static id's, so adding and removing logic is flawed @created(17-07-23 00:25) @done (17-07-25 21:37)
-  ✔ Adjust store data schema so the app can pull jars by id rather than by array index (this method has flaws when jars can be deleted from the array) @created(17-07-24 12:03) @done (17-07-25 21:37)
-  ✔ List component should have unique keys for each li element @created(17-07-24 12:35) @done (17-07-25 21:37)
-  ✔ Dispatch draw action when a user clicks 'Draw an activity!' @created(17-07-25 21:38) @done (17-07-25 23:30)
-  ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
-  ✔ npm i react-tooltip @created(17-07-25 23:58) @done (17-07-26 19:33)
-  Add tooltip to repeat icon
-  ✔ Add geolib and geolocation @created(17-07-27 18:59) @done (17-07-27 18:59)
-  ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
-  ☐ Work on mediabox layout @created(17-07-27 19:00)
-  ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
-  1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
-  2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
-  3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
-  ☐ Address mongoose deprecation warnings @created(17-07-27 00:35)
-
-
-
+Tasks:
+  General:
+    ☐ Work on mediabox layout @created(17-07-27 19:00)
+    ✔ Fix redux warnings @created(17-07-29 10:49) @done (17-07-29 10:58)
+    ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
+    ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)
+    ✔ Add actions and reducers @created(17-07-21 15:20) @done (17-07-21 16:21)
+    ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-21 17:35)
+    Duplicate jar names are not allowed, trim trailing whitespace
+    ✔ Add bootstrap styling @done (17-07-21 18:25)
+    ✔ Add 'REMOVE_JAR' functionality @created(17-07-21 17:35) @done (17-07-21 17:43)
+    ✔ npm install react-router and add BrowserRouter and Links @created(17-07-21 18:26) @done (17-07-22 14:26)
+    ✔ Standardize List component so ActivityList and JarList can use it @created(17-07-22 23:56) @done (17-07-23 00:24)
+    ✔ Clean up logic for ActivityList, JarList and List @created(17-07-22 23:57) @done (17-07-24 11:56)
+    1. Code is redundant and needs to be more readable
+    ✔ npm i react-promise @created(17-07-24 13:58) @done (17-07-25 10:20)
+    ✔ Create new async component for fetching Google Places API JSON and then rendering the component @created(17-07-24 13:58) @done (17-07-25 11:42)
+    ✔ Create component GooglePlacesResults @done (17-07-25 15:59)
+    ✔ Fix jar_id and activity_id logic. Right now the actions call static id's, so adding and removing logic is flawed @created(17-07-23 00:25) @done (17-07-25 21:37)
+    ✔ Adjust store data schema so the app can pull jars by id rather than by array index (this method has flaws when jars can be deleted from the array) @created(17-07-24 12:03) @done (17-07-25 21:37)
+    ✔ List component should have unique keys for each li element @created(17-07-24 12:35) @done (17-07-25 21:37)
+    ✔ Dispatch draw action when a user clicks 'Draw an activity!' @created(17-07-25 21:38) @done (17-07-25 23:30)
+    ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
+    ✔ npm i react-tooltip @created(17-07-25 23:58) @done (17-07-26 19:33)
+    Add tooltip to repeat icon
+  Geolocation:
+    ☐ Allow users to specify search radius @created(17-07-29 10:58)
+    ☐ Set a default latitude and longitude @created(17-07-29 11:00)
+    ☐ npm i geocoder to get address from latitude/longitude @created(17-07-29 11:02)
+    ✔ Add geolib and geolocation @created(17-07-27 18:59) @done (17-07-27 18:59)
+  Back-end REST API:
+    ☐ Address mongoose deprecation warnings @created(17-07-27 00:35)
+    ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
+    ☐ Set up routes for REST API and their calls to mLab @created(17-07-29 11:04)
+    1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
+    2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
+    3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
+    
 Optional:
-  ☐ Create a cors-anywhere server instead of using the cors-anywhere heroku proxy @created(17-07-25 10:39)
+  ☐ Set up back-end REST API to proxy requests (cors-anywhere) @created(17-07-25 10:39)
   ☐ User must confirm before deleting a jar @created(17-07-21 18:40)
   ☐ Add DocBlockr markdown / comments @created(17-07-23 00:24)
   ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-24 11:57)
   Duplicate jar names are not allowed, trim trailing whitespace
   ✔ Add styling for jars page @done (17-07-24 11:57)
-
 
 Components:
   Containers:
