@@ -6,20 +6,22 @@ class PriceLevel extends Component {
     
     generatePrice() {
         let price = [];
+        let counter = 0;
         let priceLevel = this.props.priceLevel;
         if (priceLevel === undefined)
             return;
             
         while (priceLevel !== 0) {
-            price.push(<i className="fa fa-usd" aria-hidden="true"></i>)
-            --priceLevel;    
+            price.push(<i key={counter} className="fa fa-usd" aria-hidden="true"></i>)
+            --priceLevel;
+            ++counter;
         }
         return price;
     }
     
     render() {
         return (
-            <div>{ this.generatePrice() }</div>
+            <span>{ this.generatePrice() }</span>
         );
     }
 }

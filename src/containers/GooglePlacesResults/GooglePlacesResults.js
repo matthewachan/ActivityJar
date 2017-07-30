@@ -10,7 +10,11 @@ import StarRating from '../../components/StarRating/StarRating';
 import PriceLevel from '../../components/PriceLevel/PriceLevel';
 
 class Test extends Component {
-    
+    constructor(props) {
+        super(props);
+
+        this.API_KEY = 'AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM';
+    }
     convertToMiles(meters) {
         return meters / 1609.344;
     }
@@ -34,6 +38,9 @@ class Test extends Component {
             case error.UNKNOWN_ERROR:
                 alert('An unknown error occurred.')
                 break;
+            default:
+                alert('An error occurred.');
+                break;
         }
     }
     
@@ -47,6 +54,8 @@ class Test extends Component {
     
     then(json) {
         return (
+            <div>
+                Your location: { this.address }
             <ul className='list-group'>
                 {json.results.map((result, index) => 
                     <li key={index} className='media list-group-item'>
@@ -54,15 +63,15 @@ class Test extends Component {
                             { result.photos ? <img className='img-thumbnail img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference=' + result.photos[0].photo_reference} alt='business' /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt='business' />}
                         </div>
                         <div className='media-body'>
-                            <h5 className='mt-1 mb-1'>{result.name}&nbsp;</h5>
-                            { result.opening_hours && result.opening_hours.open_now ? <p className='text-success'>Open Now</p> : <p className='text-danger'>Closed</p> }
+                            <div><h5 style={{display: 'inline'}} className='mt-0 mb-1'>{result.name}&nbsp;</h5><PriceLevel priceLevel={result.price_level} /></div>
                             <StarRating rating={result.rating} />
-                            <PriceLevel priceLevel={result.price_level} />
-                            <p>{result.vicinity}</p>
-                            <p>{this.convertToMiles(geolib.getDistance({latitude: this.latitude, longitude: this.longitude}, {latitude: result.geometry.location.lat, longitude: result.geometry.location.lng})).toPrecision(1) + ' miles'}</p>
+                            <div>{ result.opening_hours && result.opening_hours.open_now ? <div className='text-success'>Open Now</div> : <div className='text-danger'>Closed</div> }</div>
+                            <div>{result.vicinity}</div>
+                            <div>{this.convertToMiles(geolib.getDistance({latitude: this.latitude, longitude: this.longitude}, {latitude: result.geometry.location.lat, longitude: result.geometry.location.lng})).toPrecision(1) + ' miles'}</div>
                         </div>
                 </li>)}
             </ul>
+            </div>
         );
     }
     
@@ -75,18 +84,23 @@ class Test extends Component {
 		let randomActivity = activities[keys[r]].activity;
 
 		// Retrieve client geolocation via HTML5 geolocation API
-// 		global.navigator.geolocation.then(() => global.navigator.geolocation.getCurrentPosition(this.success, this.fail))
+		if (global.navigator.geolocation)
+            global.navigator.geolocation.getCurrentPosition(this.success.bind(this), this.fail.bind(this));
 		this.latitude = 37.775899;
 		this.longitude = -122.412963;
-		let url ='https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.latitude + ',' + this.longitude + '&radius=1500&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&keyword=' + randomActivity.toLowerCase()
-		console.log(url);
+
+        let geocoderUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=37.775899,-122.412963&key=' + this.API_KEY;
+        global.fetch(geocoderUrl)
+        .then(res => {
+            res.json().then(data => this.address = data.results[0].formatted_address);
+        });
+        
+		let url ='https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.latitude + ',' + this.longitude + '&radius=1500&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&keyword=' + randomActivity.toLowerCase();
 		return global.fetch(url)
 		.then(res => {this.props.draw(randomActivity); return res.json();})
     }
     
     render() {
-        if (global.navigator.geolocation)
-            global.navigator.geolocation.getCurrentPosition(this.success.bind(this), this.fail.bind(this));
         return (
             <Async before={this.before.bind(this)} then={this.then.bind(this)} />
         );

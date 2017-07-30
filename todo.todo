@@ -1,5 +1,7 @@
 Tasks:
   General:
+    ☐ Break out API key from urls. Make it a constant somewhere @created(17-07-29 19:42)
+    ☐ Install ajv beta to resolve warnings @created(17-07-29 19:33)
     ☐ Work on mediabox layout @created(17-07-27 19:00)
     ✔ Fix redux warnings @created(17-07-29 10:49) @done (17-07-29 10:58)
     ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
@@ -25,8 +27,8 @@ Tasks:
     Add tooltip to repeat icon
   Geolocation:
     ☐ Allow users to specify search radius @created(17-07-29 10:58)
-    ☐ Set a default latitude and longitude @created(17-07-29 11:00)
-    ☐ npm i geocoder to get address from latitude/longitude @created(17-07-29 11:02)
+    ✔ Set a default latitude and longitude @created(17-07-29 11:00) @done (17-07-29 19:32)
+    ✔ npm i geocoder to get address from latitude/longitude @created(17-07-29 11:02) @done (17-07-29 19:32)
     ✔ Add geolib and geolocation @created(17-07-27 18:59) @done (17-07-27 18:59)
   Back-end REST API:
     ☐ Address mongoose deprecation warnings @created(17-07-27 00:35)
@@ -35,20 +37,10 @@ Tasks:
     1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
     2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
     3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
-    
-Optional:
-  ☐ Set up back-end REST API to proxy requests (cors-anywhere) @created(17-07-25 10:39)
-  ☐ User must confirm before deleting a jar @created(17-07-21 18:40)
-  ☐ Add DocBlockr markdown / comments @created(17-07-23 00:24)
-  ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-24 11:57)
-  Duplicate jar names are not allowed, trim trailing whitespace
-  ✔ Add styling for jars page @done (17-07-24 11:57)
-
-Components:
-  Containers:
-    ✔ AddJar @done (17-07-21 16:46)
-    ✔ JarList @done (17-07-21 16:46)
-  Presentational:
-    ✔ App @done (17-07-21 18:26)
-    ✔ Input @done (17-07-21 16:46)
-    ✔ List @done (17-07-21 16:46)
+  Optional:
+    ☐ Set up back-end REST API to proxy requests (cors-anywhere) @created(17-07-25 10:39)
+    ☐ User must confirm before deleting a jar @created(17-07-21 18:40)
+    ☐ Add DocBlockr markdown / comments @created(17-07-23 00:24)
+    ✔ Add input validation for jars @created(17-07-21 16:47) @done (17-07-24 11:57)
+    Duplicate jar names are not allowed, trim trailing whitespace
+    ✔ Add styling for jars page @done (17-07-24 11:57)

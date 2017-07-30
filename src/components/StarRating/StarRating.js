@@ -10,13 +10,13 @@ class StarRating extends Component {
         while (stars.length !== 5) {
             // full star
             if (rating >= 1)
-                stars.push(<i className="fa fa-star text-primary" aria-hidden="true"></i>);
+                stars.push(<i key={Math.abs(stars.length - 5)} className="fa fa-star text-primary" aria-hidden="true"></i>);
             // half star
             else if (0 < rating && rating < 1)
-                stars.push(<i className="fa fa-star-half-o text-primary" aria-hidden="true"></i>);
+                stars.push(<i key={Math.abs(stars.length - 5)} className="fa fa-star-half-o text-primary" aria-hidden="true"></i>);
             // empty star
             else
-                stars.push(<i className="fa fa-star-o text-primary" aria-hidden="true"></i>);
+                stars.push(<i key={Math.abs(stars.length - 5)} className="fa fa-star-o text-primary" aria-hidden="true"></i>);
             --rating;
         }
         return stars;
