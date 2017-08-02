@@ -55,21 +55,33 @@ class Test extends Component {
     then(json) {
         return (
             <div>
-                Your location: { this.address }
-            <ul className='list-group'>
+                <div className='mb-2'>
+                    Your location: { this.address }
+                </div>
+            <ul className='list-unstyled list-group'>
+                <li className='list-group-item bg-primary'>
+                    <h4 className='mt-0 mb-0 media-heading text-white mx-auto'>Google Places</h4>
+                </li>   
                 {json.results.map((result, index) => 
-                    <li key={index} className='media list-group-item'>
+                    <li key={index} className='media list-group-item align-items-start'>
                         <div className='d-flex mr-5 img-container'>
-                            { result.photos ? <img className='img-thumbnail img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference=' + result.photos[0].photo_reference} alt='business' /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt='business' />}
+                            { result.photos ? <img className='img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference=' + result.photos[0].photo_reference} alt='business' /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt='business' />}
                         </div>
                         <div className='media-body'>
-                            <div><h5 style={{display: 'inline'}} className='mt-0 mb-1'>{result.name}&nbsp;</h5><PriceLevel priceLevel={result.price_level} /></div>
-                            <StarRating rating={result.rating} />
-                            <div>{ result.opening_hours && result.opening_hours.open_now ? <div className='text-success'>Open Now</div> : <div className='text-danger'>Closed</div> }</div>
-                            <div>{result.vicinity}</div>
-                            <div>{this.convertToMiles(geolib.getDistance({latitude: this.latitude, longitude: this.longitude}, {latitude: result.geometry.location.lat, longitude: result.geometry.location.lng})).toPrecision(1) + ' miles'}</div>
+                            <div className='mt-3'>
+                                <h5 style={{ display: 'inline' }} className='mt-0 mb-1 media-heading'>{result.name}&nbsp;</h5>
+                                <PriceLevel className='badge badge-default pull-right' priceLevel={result.price_level} />
+                                <StarRating rating={result.rating} />
+                            </div>
+                            
+                            <div className='mt-4'>
+                                <div>{result.vicinity}</div>
+                                <div>{this.convertToMiles(geolib.getDistance({latitude: this.latitude, longitude: this.longitude}, {latitude: result.geometry.location.lat, longitude: result.geometry.location.lng})).toPrecision(1) + ' miles'}</div>
+                                <div>{ result.opening_hours && result.opening_hours.open_now ? <div className='text-success'>Open Now</div> : <div className='text-danger'>Closed</div> }</div>
+                            </div>
                         </div>
-                </li>)}
+                    </li>
+                )}
             </ul>
             </div>
         );

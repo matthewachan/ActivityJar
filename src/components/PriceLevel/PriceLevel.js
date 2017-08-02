@@ -21,7 +21,7 @@ class PriceLevel extends Component {
     
     render() {
         return (
-            <span>{ this.generatePrice() }</span>
+            <span className={this.props.className} style={this.props.style}>{ this.generatePrice() }</span>
         );
     }
 }
