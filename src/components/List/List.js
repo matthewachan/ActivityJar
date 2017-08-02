@@ -11,7 +11,11 @@ class List extends Component {
 				{ this.props.items.map((item, index) => 
 						<div className='list-group-item justify-content-between' key={item.id}>
 							<li style={{listStyle: 'none'}}>
-								 { this.props.list_link ? <Link to={this.props.list_link_path + item.id}>{item.text}</Link> : item.text }
+								 { this.props.list_link ? 
+								 	<div>
+								 		<Link to={this.props.list_link_path + item.id} className='mr-2'>{item.text}</Link>
+								 		<span className='badge badge-default align-middle'>{item.num_activities}</span>
+								 	</div> : item.text }
 							</li>
 							<div>
 								<span data-tip='Repeat?'>{this.props.item_repeat ? <i onClick={() => this.props.toggle(item.id)} className={item.repeat ? 'fa fa-repeat mr-3 text-primary' : 'fa fa-repeat mr-3 text-muted'} aria-hidden='true'></i> : null}</span>

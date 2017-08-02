@@ -65,7 +65,7 @@ class Test extends Component {
                 {json.results.map((result, index) => 
                     <li key={index} className='media list-group-item align-items-start'>
                         <div className='d-flex mr-5 img-container'>
-                            { result.photos ? <img className='img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference=' + result.photos[0].photo_reference} alt='business' /> : <img className='img-thumbnail img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt='business' />}
+                            { result.photos ? <img className='business-img img-fluid' src={'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&key=AIzaSyBXMLM_kH6IVG8NsBU6KcTvbpHP2oZUgtM&photo_reference=' + result.photos[0].photo_reference} alt='business' /> : <img className='business-img img-fluid' src='https://odi.osu.edu/assets/images/ODI/no_photo_icon.png' alt='business' />}
                         </div>
                         <div className='media-body'>
                             <div className='mt-3'>

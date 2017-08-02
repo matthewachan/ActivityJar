@@ -1,8 +1,12 @@
 Tasks:
   General:
+    ☐ Add badge icon to main page @created(17-08-01 22:59)
+    ✘ Spice up the main ActivityJar page. Looks to plain right now @created(17-08-01 19:51) @cancelled (17-08-01 22:59) => need more content to fill the page with first
+    ☐ Add a close button to the Google Places results list. This will make the 'Draw' button re-appear @created(17-08-01 19:51)
     ☐ Break out API key from urls. Make it a constant somewhere @created(17-07-29 19:42)
     ☐ Install ajv beta to resolve warnings @created(17-07-29 19:33)
-    ☐ Work on mediabox layout @created(17-07-27 19:00)
+    Getting async package warnings
+    ✔ Work on mediabox layout @created(17-07-27 19:00) @done (17-08-01 19:50)
     ✔ Fix redux warnings @created(17-07-29 10:49) @done (17-07-29 10:58)
     ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
     ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)

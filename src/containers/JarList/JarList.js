@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 	Object.keys(state).forEach((key) => {
 		items.push({
 			id: key,
-			text: state[key].label
+			text: state[key].label,
+			num_activities: Object.keys(state[key].activities).length
 		});
 	});
 	// Get all labels from jars array
