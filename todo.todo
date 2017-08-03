@@ -1,12 +1,8 @@
 Tasks:
   General:
-    ☐ Add badge icon to main page @created(17-08-01 22:59)
-    ✘ Spice up the main ActivityJar page. Looks to plain right now @created(17-08-01 19:51) @cancelled (17-08-01 22:59) => need more content to fill the page with first
-    ☐ Add a close button to the Google Places results list. This will make the 'Draw' button re-appear @created(17-08-01 19:51)
-    ☐ Break out API key from urls. Make it a constant somewhere @created(17-07-29 19:42)
-    ☐ Install ajv beta to resolve warnings @created(17-07-29 19:33)
+    ☐ Allow tags to be added to jars (and allow filtering on tags) @created(17-08-02 17:18)
+    ☐ Brainstorm how to combine Auth0, redux and REST API @created(17-08-02 16:02)
     Getting async package warnings
-    ✔ Work on mediabox layout @created(17-07-27 19:00) @done (17-08-01 19:50)
     ✔ Fix redux warnings @created(17-07-29 10:49) @done (17-07-29 10:58)
     ✔ Replace price_level and rating with font awesome icons @created(17-07-27 18:59) @done (17-07-27 18:59)
     ✔ Map out components and containers @created(17-07-21 15:20) @done (17-07-21 16:21)
@@ -29,7 +25,13 @@ Tasks:
     ✔ Implement toggle activity logic @created(17-07-25 23:30) @done (17-07-25 23:30)
     ✔ npm i react-tooltip @created(17-07-25 23:58) @done (17-07-26 19:33)
     Add tooltip to repeat icon
+  Design:
+    ✔ Add badge icon to main page @created(17-08-01 22:59) @done (17-08-02 16:00)
+    ✘ Spice up the main ActivityJar page. Looks to plain right now @created(17-08-01 19:51) @cancelled (17-08-01 22:59) => need more content to fill the page with first
+    ☐ Add a close button to the Google Places results list. This will make the 'Draw' button re-appear @created(17-08-01 19:51)
+    ✔ Work on mediabox layout @created(17-07-27 19:00) @done (17-08-01 19:50)
   Geolocation:
+
     ☐ Allow users to specify search radius @created(17-07-29 10:58)
     ✔ Set a default latitude and longitude @created(17-07-29 11:00) @done (17-07-29 19:32)
     ✔ npm i geocoder to get address from latitude/longitude @created(17-07-29 11:02) @done (17-07-29 19:32)
@@ -41,6 +43,9 @@ Tasks:
     1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
     2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
     3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
+  Tech debt:
+    ☐ Break out API key from urls. Make it a constant somewhere @created(17-07-29 19:42)
+    ☐ Install ajv beta to resolve warnings @created(17-07-29 19:33)    
   Optional:
     ☐ Set up back-end REST API to proxy requests (cors-anywhere) @created(17-07-25 10:39)
     ☐ User must confirm before deleting a jar @created(17-07-21 18:40)
