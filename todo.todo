@@ -1,5 +1,7 @@
 Tasks:
   General:
+    ☐ Test routes @created(17-08-03 21:52)
+    ☐ Build REST API routes @created(17-08-03 21:52)
     ☐ Allow tags to be added to jars (and allow filtering on tags) @created(17-08-02 17:18)
     ☐ Brainstorm how to combine Auth0, redux and REST API @created(17-08-02 16:02)
     Getting async package warnings
