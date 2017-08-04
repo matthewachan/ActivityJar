@@ -1,6 +1,11 @@
 Tasks:
   General:
+    ☐ Requests currently fail if a fake (or non-matching) jar_id is passed in @created(17-08-04 00:54)
+    ☐ Adding an activity should be a PUT
+    ☐ Find better way to log express route errors, etc. @created(17-08-03 22:55)
+    Express comes with error handling middleware. Just use next(err) or next(new Error('error!'))
     ☐ Test routes @created(17-08-03 21:52)
+    Loading state works. Adding jar works. Adding activity to jar works.
     ☐ Build REST API routes @created(17-08-03 21:52)
     ☐ Allow tags to be added to jars (and allow filtering on tags) @created(17-08-02 17:18)
     ☐ Brainstorm how to combine Auth0, redux and REST API @created(17-08-02 16:02)
@@ -33,19 +38,19 @@ Tasks:
     ☐ Add a close button to the Google Places results list. This will make the 'Draw' button re-appear @created(17-08-01 19:51)
     ✔ Work on mediabox layout @created(17-07-27 19:00) @done (17-08-01 19:50)
   Geolocation:
-
     ☐ Allow users to specify search radius @created(17-07-29 10:58)
     ✔ Set a default latitude and longitude @created(17-07-29 11:00) @done (17-07-29 19:32)
     ✔ npm i geocoder to get address from latitude/longitude @created(17-07-29 11:02) @done (17-07-29 19:32)
     ✔ Add geolib and geolocation @created(17-07-27 18:59) @done (17-07-27 18:59)
   Back-end REST API:
-    ☐ Address mongoose deprecation warnings @created(17-07-27 00:35)
-    ☐ Connect redux data store with mongolabs schema @created(17-07-25 23:59)
-    ☐ Set up routes for REST API and their calls to mLab @created(17-07-29 11:04)
+    ✔ Address mongoose deprecation warnings @created(17-07-27 00:35) @done (17-08-03 23:46)
+    ✔ Connect redux data store with mongolabs schema @created(17-07-25 23:59) @done (17-08-03 23:46)
+    ✔ Set up routes for REST API and their calls to mLab @created(17-07-29 11:04) @done (17-08-03 23:46)
     1. Look into the best way to store data in MongoDB. I might want to consider breaking out activities from jars and join them on jar_id. Not sure if this join is viable though
     2. Once the data is loaded on the client-side server, it needs to be transformed (mostly just string-hashing) to generate the redux store.
     3. Client-side server and back-end server required. Client-sider server is sufficient for generating the redux store initial state, but back-end server API is required to make updates
   Tech debt:
+    ☐ Fix reducer logic. Jar and activity id's should be stored as strings. Remove all parseInt(id, 10) from codebase @created(17-08-03 23:09)
     ☐ Break out API key from urls. Make it a constant somewhere @created(17-07-29 19:42)
     ☐ Install ajv beta to resolve warnings @created(17-07-29 19:33)    
   Optional:

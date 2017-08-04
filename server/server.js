@@ -50,7 +50,15 @@ app.get('/users', (req, res) => {
 // Look at docs here: https://docs.mongodb.com/manual/tutorial/query-arrays/ 
 app.get('/jars', (req, res) => {
     var user_id = req.query.user_id;
-    var query = { $or: [{ viewable_by: user_id }, { editable_by: user_id }, { owner_id: user_id }] };
+    var query = {
+        $or: [{
+            viewable_by: user_id
+        }, {
+            editable_by: user_id
+        }, {
+            owner_id: user_id
+        }]
+    };
     Jar.find(query, (err, jars) => {
         if (err)
             console.log(err);
@@ -74,7 +82,7 @@ app.post('/jar', (req, res) => {
     var newJar;
     if (req.query.label) {
         newJar = new Jar({
-            jar_id: hash(req.query.label),
+            jar_id: hash(req.query.label).toString(),
             label: req.query.label,
             activities: {},
             viewable_by: [],
@@ -91,10 +99,10 @@ app.post('/jar', (req, res) => {
 });
 
 // Add a new activity
-app.post('/jar/:jar_id', (req, res) => {
+app.post('/jars/:jar_id', (req, res) => {
     if (req.params.jar_id)
         Jar.findOne({
-            jar_id: parseInt(req.params.jar_id, 10)
+            jar_id: req.params.jar_id
         }, (err, jar) => {
             if (err)
                 console.log('Could not find the jar to update.');
@@ -115,6 +123,42 @@ app.post('/jar/:jar_id', (req, res) => {
             }
         });
 });
+
+// Remove activity
+app.put('/jars/:jar_id', (req, res) => {
+	if (!req.params.jar_id || !req.query.activity_id)
+		return next(new Error('Could not delete activity (id not specified).'));
+	Jar.findOne({jar_id: req.params.jar_id}, (err, jar) => {
+		if (err)
+			return next(err);
+		
+		var updatedJar = jar;
+		delete updatedJar.activities[req.query.activity_id];
+		
+		
+		updatedJar.save((err, updatedJar) => {
+			if (err)
+				return next(err);
+			console.log('Removed activity from jar ' + req.params.jar_id);
+			res.json(updatedJar);
+		})
+	});
+});
+
+// Remove jar
+app.delete('/jars/:jar_id', (req, res) => {
+    if (!req.params.jar_id)
+        return next(new Error('Could not delete jar (jar id not specified).'));
+
+    Jar.remove({jar_id: req.params.jar_id}, (err) => {
+    	if (err)
+    		return next(err);
+    	console.log('Jar ' + req.params.jar_id + ' removed successfully!');
+    })
+
+});
+
+// Toggle repeatable
 
 app.listen(PORT);
 console.log('ActivityJar REST API listening on port ' + PORT);

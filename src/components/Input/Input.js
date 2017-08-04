@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import './Input.css';
 
 class Input extends Component {
-
+	/**
+	 * Validate the item and generate an error message if a test case is not passed
+	 * @return {String} Short description of the error
+	 */
 	validate() {
 		let errorMsg = '';
 		this.props.items.forEach((item) => {
@@ -14,9 +17,12 @@ class Input extends Component {
 		return errorMsg;
 	}
 	
+	/**
+	 * Print error messages or (if no error) add the item
+	 * @param {Event} event Event object created when the user submits the form
+	 */
 	addItem(event) {
 		event.preventDefault();
-		console.log(this.boop);
 		let errorMsg = this.validate();
 		
 		if (errorMsg !== '')
@@ -28,7 +34,6 @@ class Input extends Component {
 	}
 
 	render() {
-		this.boop = 5;
 		return (
 			<form onSubmit={event => this.addItem(event)}>
 				<div className='form-group'>

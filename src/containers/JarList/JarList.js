@@ -4,10 +4,14 @@ import List from '../../components/List/List';
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		remove: (id) => dispatch({
-			type: 'REMOVE_JAR',
-			jar_id: id
-		})
+		remove: (id) => {
+			global.fetch('http://localhost:8080/jars/' + id, { method: 'DELETE' }) // POST request to add new jar
+			
+			return dispatch({
+				type: 'REMOVE_JAR',
+				jar_id: id
+			});
+		}
 	};
 };
 

@@ -9,6 +9,11 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
+/**
+ * Format the results returned by the database for the Redux store
+ * @param  {Array} collection Array of documents returned by MongoDB
+ * @return {Object}            JSON object used to initialize the Redux store's state
+ */
 function getStateFromCollection(collection) {
   var state = {};
 
