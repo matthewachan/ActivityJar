@@ -65,7 +65,7 @@ Comment below or shoot me an email at matthew.a.chan@gmail.com if you're interes
 
 ## Authors
 
-* **Matthew Chan** - *Main developer* - [PurpleBooth](https://github.com/matthewachan)
+* **Matthew Chan** - *Main developer* - [matthewachan](https://github.com/matthewachan)
 
 ## License
 
