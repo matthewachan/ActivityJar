@@ -3,13 +3,14 @@ const cors = require('cors');
 const jwt = require('express-jwt');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const hash = require('string-hash');
 
 const Jar = require('./schemas/jar.js');
 const User = require('./schemas/user.js');
-const db = require('./actions/index.js');
+const user_collection = require('./actions/user_collection.js');
 
 
-const PORT = 7000;
+const PORT = 8080;
 
 
 
@@ -30,38 +31,74 @@ mongoose.connect('mongodb://dev_user:Graey421@ds147872.mlab.com:47872/activityja
 
 
 
-
-app.get('/', (req, res) => {
-	db.findUsers().then(users => {
+// Register new user (POST)
+app.get('/users', (req, res) => {
+	user_collection.findUsers().then(users => {
 		res.json(users);
 	});
 	
 });
 
-app.post('/', (req, res) => {
+app.post('/user', (req, res) => {
 	var newUser;
 	if (req.query.user_id) {
-		newUser = db.saveUser(req.query.user_id);
+		newUser = user_collection.saveUser(req.query.user_id);
 	}
 	res.json(newUser);
 });
 
+// Get all jars that are either owned, editable, or viewable by a user (GET)
+// Look at docs here: https://docs.mongodb.com/manual/tutorial/query-arrays/ 
+app.get('/jars', (req, res) => {
+	// var user_id = req.query.user_id;
+	// var query = { $or: [{ viewable_by: user_id }, { editable_by: user_id }, { owner: user_id }] };
+	Jar.find({}, (err, jars) => {
+		if (err)
+			console.log(err);
+		res.json(jars);
+	})	
+});
 
+// Add a new jar
+app.post('/jar', (req, res) => {
+	var newJar;
+	if (req.query.label) {
+		newJar = new Jar({ jar_id: hash(req.query.label), label: req.query.label, activities: {}, viewable_by: [], editable_by: [] });
+		newJar.save( (err, success) => {
+			if (err)
+				console.log('Failed to add new jar.');
+			else
+				console.log('Added a new jar successfully.');
+		})
+	}
+	res.json(newJar);
+});
 
+// Add a new activity
+app.post('/jar/:jar_id', (req, res) => {
+	if (req.params.jar_id)
+		Jar.findOne({ jar_id : parseInt(req.params.jar_id, 10) }, (err, jar) => {
+			if (err)
+				console.log('Could not find the jar to update.');
+			else {
+				var newActivity = {};
+				var activity_id = hash(req.query.activity).toString();
+				newActivity[activity_id] = {repeat: false, activity: req.query.activity};
+				jar.activities = Object.assign({}, jar.activities, newActivity);
+				jar.save( (err, updatedJar) => {
+					if (err)
+						console.log('Failed to update jar.');
+					res.json(jar);
+				})
+				
+			}
+		});
+});
 
-app.listen(PORT);
+app.listen(PORT, '0.0.0.0');
 console.log('ActivityJar REST API listening on port ' + PORT);
 
 module.exports = app;
-
-
-
-// Register new user (POST)
-// Get all jars that are either owned, editable, or viewable by a user (GET)
-// Add a new jar
-// Add a new activity
-
-
 
 // LATER
 // Make jar editable by user
