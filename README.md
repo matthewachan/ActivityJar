@@ -15,11 +15,9 @@ To get the app started in your local environment, follow the steps below!
 
 ### Prerequisites
 
-Node.js (versions 6.11 and later)
-NPM
-
+[Node.js](https://nodejs.org/en/) (versions 6.11 and later)
 ```
-Give examples
+sudo apt-get install node
 ```
 
 ### Installing
