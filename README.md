@@ -17,7 +17,7 @@ To get the app started in your local environment, follow the steps below!
 
 [Node.js](https://nodejs.org/en/) (versions 6.11 and later)
 ```
-sudo apt-get install node
+$ sudo apt-get install node
 ```
 
 ### Installing
@@ -27,20 +27,25 @@ A step by step series of examples that tell you have to get a development env ru
 Clone this repository
 
 ```
-git clone https://github.com/matthewachan/activityjar
+$ git clone https://github.com/matthewachan/activityjar
+```
+
+Checkout the stable branch to get the latest stable release
+```
+$ git checkout stable
 ```
 
 Navigate to the newly created folder and install the required packages for the front-end React application and server
 
 ```
-cd ./activityjar
-npm install
+$ cd ./activityjar
+$ npm install
 ```
 
 From that directory, navigate to the server folder and install the required packages for the back-end REST API
 ```
-cd ./server
-npm install
+$ cd ./server
+$ npm install
 ```
 
 
