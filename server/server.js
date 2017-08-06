@@ -128,20 +128,22 @@ app.post('/jars/:jar_id', (req, res) => {
 app.put('/jars/:jar_id', (req, res) => {
 	if (!req.params.jar_id || !req.query.activity_id)
 		return next(new Error('Could not delete activity (id not specified).'));
+
 	Jar.findOne({jar_id: req.params.jar_id}, (err, jar) => {
 		if (err)
 			return next(err);
 		
-		var updatedJar = jar;
-		delete updatedJar.activities[req.query.activity_id];
-		
-		
-		updatedJar.save((err, updatedJar) => {
+		delete jar.activities[req.query.activity_id];
+		jar.markModified('activities');
+
+		jar.save((err, success) => {
 			if (err)
 				return next(err);
-			console.log('Removed activity from jar ' + req.params.jar_id);
-			res.json(updatedJar);
+			else {
+				res.json(jar);
+			}
 		})
+		
 	});
 });
 
